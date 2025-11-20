@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beadora – Handgjorda Lyxarmband</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #fff8fb, #fdeef5);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background-color: #fff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: #d36b8c;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      margin-left: 2rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #d36b8c;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1600181954059-1fe3c3f545bb?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      z-index: 1;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 0;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      z-index: 2;
+    }
+    .hero button {
+      margin-top: 2rem;
+      padding: 1rem 2.5rem;
+      background-color: #d36b8c;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      z-index: 2;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .hero button:hover {
+      background-color: #b84e72;
+      transform: scale(1.05);
+    }
+
+    /* PRODUCTS */
+    section.products {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+    section.products h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #d36b8c;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .product {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+    .product:hover {
+      transform: rotateY(5deg) rotateX(3deg) translateZ(5px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    }
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: contain;
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .product:hover img {
+      transform: translateZ(20px) scale(1.05);
+    }
+    .product-name {
+      font-weight: 600;
+      font-size: 1.3rem;
+      margin: 1rem 0 0.5rem;
+    }
+    .product-price {
+      color: #d36b8c;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* SPECIAL DESIGN */
+    section#special {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 2rem;
+    }
+    section#special h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #d36b8c;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .special-img {
+      height: 250px !important;
+      object-fit: contain !important;
+      width: 100%;
+    }
+
+    /* ORDER SECTION */
+    section.order {
+      max-width: 700px;
+      margin: 6rem auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+    }
+    section.order h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: #d36b8c;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+    form label {
+      display: block;
+      font-weight: 500;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    form input[type="submit"] {
+      background-color: #d36b8c;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      padding: 1rem;
+      margin-top: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    form input[type="submit"]:hover {
+      background-color: #b84e72;
+      transform: scale(1.03);
+    }
+    #confirmation {
+      text-align: center;
+      margin-top: 2rem;
+      background: #f0fff4;
+      color: #2f855a;
+      border: 1px solid #c6f6d5;
+      padding: 1rem;
+      border-radius: 10px;
+      font-weight: 500;
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Beadora</div>
+    <nav>
+      <a href="#products">Armband</a>
+      <a href="#special">Specialdesign</a>
+      <a href="#order">Beställ</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Beadora – Skönhet i Varje Detalj</h1>
+    <p>Lyxiga, handgjorda armband för varje tillfälle</p>
+    <button onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Utforska & Beställ</button>
+  </section>
+
+  <!-- ⭐ 4 PRODUKTER ⭐ -->
+  <section id="products" class="products">
+    <h2>Våra Favoriter</h2>
+    <div class="product-grid">
+
+      <div class="product">
+        <img src="81d733ba-f258-47bd-969c-51448755dc7e.JPG" alt="Rosa Pärla" />
+        <div class="product-name">Rosa Pärla</div>
+        <p>Elegant och stilren med ljusrosa pärlor och silverdetaljer.</p>
+        <div class="product-price">45 kr</div>
+      </div>
+
+      <div class="product">
+        <img src="4076b9c3-9bb2-46eb-8edb-704e065ad0a0.JPG" alt="Färgstark Charm" />
+        <div class="product-name">Färgstark Charm</div>
+        <p>Livfullt armband med glada färger och lekfull energi.</p>
+        <div class="product-price">45 kr</div>
+      </div>
+
+      <div class="product">
+        <img src="2.JPG" alt="Midnight Pearl" />
+        <div class="product-name">Beadora Lumiére</div>
+        <p>Rika färger pärlor med en lyxig glans – perfekt för kvällen.</p>
+        <div class="product-price">45 kr</div>
+      </div>
+
+      <div class="product">
+        <img src="3.JPG" alt="Golden Dream" />
+        <div class="product-name">Golden Dream</div>
+        <p>Ett varmt och glänsande armband med gulddetaljer.</p>
+        <div class="product-price">45 kr</div>
+      </div>
+      <div class="product">
+        <img src="4.JPG" alt="Golden Dream" />
+        <div class="product-name">L'Aura Horlogère</div>
+        <p>Elegant damklocka med pärlarmband, guldfärgade siffror och vit urtavla.</p>
+        <div class="product-price">145 kr</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ⭐ SPECIAL DESIGN ⭐ -->
+  <section id="special">
+    <h2>Specialdesign</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="alterantiv.JPG" alt="Din Egen Design" class="special-img" />
+        <div class="product-name">Din Egen Design</div>
+        <p>Lägg till din personliga touch – 15 kr extra för specialdesign.</p>
+        <div class="product-price">45 kr + 15 kr</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⭐ ORDER ⭐ -->
+  <section id="order" class="order">
+    <h2>Beställ Ditt Armband</h2>
+    <form id="orderForm" action="https://formspree.io/f/mjkpbkvg" method="POST">
+
+      <label for="name">Namn:</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="email">E-post:</label>
+      <input type="email" name="email" id="email" required />
+
+      <label for="address">Adress:</label>
+      <input type="text" name="address" id="address" required />
+
+      <label for="products">Vilka produkter vill du beställa?</label>
+      <textarea name="products" id="products" rows="4" required></textarea>
+
+      <input type="hidden" name="order_number" id="order_number" />
+
+      <input type="submit" value="Skicka Order" />
+    </form>
+
+    <div id="confirmation">
+      Tack för din beställning! 💕 <br />
+      Ditt ordernummer: <span id="confirmOrderNum"></span>
+    </div>
+  </section>
+
+  <section id="kontakt" style="
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center; 
+  margin: 6rem auto; 
+  padding: 2rem; 
+  background-color: #fff8fb; 
+  border-radius: 20px; 
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+  max-width: 500px;
+  gap: 0.6rem;
+">
+  <h2 style="font-family: 'Playfair Display', serif; color: #d36b8c; font-size: 2rem; margin-bottom: 1rem;">Kontakta Oss</h2>
+  <p>📞 076-898-28-88</p>
+  <p>📧 <a href="mailto:kmabrf4@gmail.com" style="color:#d36b8c; text-decoration:none; font-weight:500;">kmabrf4@gmail.com</a></p>
+  <p>📸 <a href="https://instagram.com/Beadora88" target="_blank" style="color:#d36b8c; text-decoration:none; font-weight:500;">@Beadora88</a></p>
+</section>
+
+
+  <footer>© 2025 Beadora – Handgjorda armband med kärlek</footer>
+
+  <script>
+    const orderForm = document.getElementById('orderForm');
+    const orderNumberInput = document.getElementById('order_number');
+    const confirmationDiv = document.getElementById('confirmation');
+    const confirmOrderNum = document.getElementById('confirmOrderNum');
+
+    orderForm.addEventListener('submit', function(e) {
+      const orderNum = Math.floor(100000 + Math.random() * 900000);
+      orderNumberInput.value = orderNum;
+      confirmOrderNum.textContent = orderNum;
+      confirmationDiv.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
